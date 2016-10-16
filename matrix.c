@@ -30,6 +30,22 @@ int virtualSum(matrix *m, int x, int y, int h) {
     return sum;
 }
 
+/**
+ * 求一个矩阵中最大的二维矩阵(元素和最大).如:
+ * 1 2 0 3 4
+ * 2 3 4 5 1
+ * 1 1 5 3 0
+ * 中最大的是:
+ * 4 5
+ * 5 3
+ * 要求:(1)写出算法;(2)分析时间复杂度;(3)用C写出关键代码
+ * @param m
+ * @param w
+ * @param h
+ * @param x
+ * @param y
+ * @return 
+ */
 int getMaxSumSubMatrix(matrix *m, int w, int h, int *x, int *y)
 {
     int *vSumBuff = malloc(sizeof(int) * m->with * m->height);

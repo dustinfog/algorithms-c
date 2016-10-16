@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
 	2, 3, 4, 5, 1,
 	1, 1, 5, 3, 0		
     };
+    
     matrix m = {data, 5, 3};
     
     int x, y;
