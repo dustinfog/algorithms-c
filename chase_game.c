@@ -36,7 +36,6 @@ void chase(int **m, int *order, int *result, int n) {
 	    	int winner = *((int *)m + (*pplayer1) * n + *pplayer2);	
 		int loser = winner == *pplayer1 ? *pplayer2 : *pplayer1;
 	    	*(result + rank) = loser;
-		printf("rank : %d => %d\n",rank, loser);
 		rank --;
 		
 		if (maxPlayerIndex == 1) {
