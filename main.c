@@ -15,21 +15,13 @@
 #include <stdlib.h>
 
 #include "matrix.h"
+#include "chase_game.h"
 /*
  * 
  */
 int main(int argc, char** argv) {
-    int data[] = {
-	1, 2, 0, 3, 4,
-	2, 3, 4, 5, 1,
-	1, 1, 5, 3, 0		
-    };
-    
-    matrix m = {data, 5, 3};
-    
-    int x, y;
-    int maxSum = getMaxSumSubMatrix(&m, 2, 2, &x, &y);
-    printf("%d, %d : %d", x, y, maxSum);
+    //testGetMaxSumSubMatrix();
+    testChase();
     
     return (EXIT_SUCCESS);
 }
