@@ -36,8 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/chase_game.o \
+	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/matrix.o
+	${OBJECTDIR}/matrix.o \
+	${OBJECTDIR}/max_concat_string.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -45,12 +47,16 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 # Test Files
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
-	${TESTDIR}/TestFiles/f2
+	${TESTDIR}/TestFiles/f4 \
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f3
 
 # Test Object Files
 TESTOBJECTFILES= \
+	${TESTDIR}/tests/testLinkedList.o \
 	${TESTDIR}/tests/test_chase_game.o \
-	${TESTDIR}/tests/test_matrix.o
+	${TESTDIR}/tests/test_matrix.o \
+	${TESTDIR}/tests/test_max_concat_string.o
 
 # C Compiler Flags
 CFLAGS=
@@ -81,6 +87,11 @@ ${OBJECTDIR}/chase_game.o: chase_game.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chase_game.o chase_game.c
 
+${OBJECTDIR}/linked_list.o: linked_list.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/linked_list.o linked_list.c
+
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -90,6 +101,11 @@ ${OBJECTDIR}/matrix.o: matrix.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix.o matrix.c
+
+${OBJECTDIR}/max_concat_string.o: max_concat_string.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_concat_string.o max_concat_string.c
 
 # Subprojects
 .build-subprojects:
@@ -102,9 +118,17 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/test_chase_game.o ${OBJECTFILES:%.o=%_
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lcunit 
 
+${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/testLinkedList.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} -lcunit 
+
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/test_matrix.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} -lcunit 
+
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/test_max_concat_string.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} -lcunit 
 
 
 ${TESTDIR}/tests/test_chase_game.o: tests/test_chase_game.c 
@@ -113,10 +137,22 @@ ${TESTDIR}/tests/test_chase_game.o: tests/test_chase_game.c
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_chase_game.o tests/test_chase_game.c
 
 
+${TESTDIR}/tests/testLinkedList.o: tests/testLinkedList.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/testLinkedList.o tests/testLinkedList.c
+
+
 ${TESTDIR}/tests/test_matrix.o: tests/test_matrix.c 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_matrix.o tests/test_matrix.c
+
+
+${TESTDIR}/tests/test_max_concat_string.o: tests/test_max_concat_string.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_max_concat_string.o tests/test_max_concat_string.c
 
 
 ${OBJECTDIR}/chase_game_nomain.o: ${OBJECTDIR}/chase_game.o chase_game.c 
@@ -130,6 +166,19 @@ ${OBJECTDIR}/chase_game_nomain.o: ${OBJECTDIR}/chase_game.o chase_game.c
 	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chase_game_nomain.o chase_game.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/chase_game.o ${OBJECTDIR}/chase_game_nomain.o;\
+	fi
+
+${OBJECTDIR}/linked_list_nomain.o: ${OBJECTDIR}/linked_list.o linked_list.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/linked_list.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/linked_list_nomain.o linked_list.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/linked_list.o ${OBJECTDIR}/linked_list_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c 
@@ -158,12 +207,27 @@ ${OBJECTDIR}/matrix_nomain.o: ${OBJECTDIR}/matrix.o matrix.c
 	    ${CP} ${OBJECTDIR}/matrix.o ${OBJECTDIR}/matrix_nomain.o;\
 	fi
 
+${OBJECTDIR}/max_concat_string_nomain.o: ${OBJECTDIR}/max_concat_string.o max_concat_string.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/max_concat_string.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_concat_string_nomain.o max_concat_string.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/max_concat_string.o ${OBJECTDIR}/max_concat_string_nomain.o;\
+	fi
+
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi
