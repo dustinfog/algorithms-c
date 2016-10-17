@@ -24,11 +24,10 @@ int clean_suite(void) {
 
 void testAppendLinkedListNode() {
     LinkedList* list = createLinkedList();
-    int var1 = 1, var2 = 2;
-    appendLinkedListNode(list, &var1);
-    CU_ASSERT_EQUAL(list->head->value, &var1);
-    appendLinkedListNode(list, &var2);
-    CU_ASSERT_EQUAL(list->tail->value, &var2);
+    appendLinkedListNode(list, (void *) 1);
+    CU_ASSERT_EQUAL((int)list->head->value, 1);
+    appendLinkedListNode(list, (void *) 2);
+    CU_ASSERT_EQUAL((int)list->tail->value, 2);
     CU_ASSERT_EQUAL(list->length, 2);
     freeLinkedList(list);
 }
