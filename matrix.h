@@ -28,7 +28,6 @@ extern "C" {
     void setDatum(matrix *m, int x, int y, int v);
     int virtualSum(matrix *m, int x, int y, int h);
     int getMaxSumSubMatrix(matrix *m, int w, int h, int *x, int *y);
-    void testGetMaxSumSubMatrix();
 
 #ifdef __cplusplus
 }

@@ -5,24 +5,24 @@
  */
 
 /* 
- * File:   chase_game.h
+ * File:   max_concat_string.h
  * Author: panzd
  *
- * Created on October 16, 2016, 4:26 PM
+ * Created on October 17, 2016, 2:33 PM
  */
 
-#ifndef CHASE_GAME_H
-#define CHASE_GAME_H
+#ifndef MAX_CONCAT_STRING_H
+#define MAX_CONCAT_STRING_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void chase(int **m, int *order, int *result, int n);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* CHASE_GAME_H */
+#endif /* MAX_CONCAT_STRING_H */
 

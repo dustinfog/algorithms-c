@@ -79,18 +79,3 @@ int getMaxSumSubMatrix(matrix *m, int w, int h, int *x, int *y)
     free(vSumBuff);
     return maxSum;
 }
-
-void testGetMaxSumSubMatrix()
-{
-   int data[] = {
-	1, 2, 0, 3, 4,
-	2, 3, 4, 5, 1,
-	1, 1, 5, 3, 0		
-    };
-    
-    matrix m = {data, 5, 3};
-    
-    int x, y;
-    int maxSum = getMaxSumSubMatrix(&m, 2, 2, &x, &y);
-    printf("%d, %d : %d", x, y, maxSum); 
-}
