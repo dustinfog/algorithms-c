@@ -5,7 +5,6 @@
  */
 
 #include "chase_game.h"
-#include <stdio.h>
 
 /**
  * 谷歌笔试：

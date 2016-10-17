@@ -7,7 +7,6 @@
 #include "matrix.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 #define getIndex(w, x, y) (y) * (w) + (x)
 
