@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>chase_game.h</itemPath>
+      <itemPath>digraph.h</itemPath>
       <itemPath>linked_list.h</itemPath>
       <itemPath>matrix.h</itemPath>
       <itemPath>max_concat_string.h</itemPath>
@@ -17,6 +18,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>chase_game.c</itemPath>
+      <itemPath>digraph.c</itemPath>
       <itemPath>linked_list.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>matrix.c</itemPath>
@@ -31,6 +33,12 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/test_chase_game.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="Test Digraph"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/testDigraph.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="Test Linked List"
@@ -72,6 +80,10 @@
       </item>
       <item path="chase_game.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="digraph.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="digraph.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
@@ -104,6 +116,14 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -117,6 +137,8 @@
       <item path="max_concat_string.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="max_concat_string.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -151,6 +173,10 @@
       </item>
       <item path="chase_game.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="digraph.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="digraph.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
@@ -183,6 +209,14 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -196,6 +230,8 @@
       <item path="max_concat_string.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="max_concat_string.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
       </item>

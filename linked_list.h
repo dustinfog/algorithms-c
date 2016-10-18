@@ -31,6 +31,7 @@ extern "C" {
     LinkedList *createLinkedList();
     void freeLinkedList(LinkedList *list);
     void appendLinkedListNode(LinkedList *list, void *value);
+    void appendLinkedList(LinkedList *list, LinkedList *another);
 
 #ifdef __cplusplus
 }

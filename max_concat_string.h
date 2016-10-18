@@ -19,6 +19,7 @@ extern "C" {
 #endif
 #include <stdbool.h>
 
+    
     bool isConcatable(char *str1, char *str2, int len);
 
 #ifdef __cplusplus

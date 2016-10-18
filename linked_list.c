@@ -39,3 +39,15 @@ void appendLinkedListNode(LinkedList *list, void *value) {
 
     list->length ++;
 }
+
+
+void appendLinkedList(LinkedList *list, LinkedList *another)
+{
+    if (!another->length) {
+	return;
+    }
+    
+    list->tail->next = another->head;
+    another->head->prev = list->tail;
+    list->tail = another->tail;
+}

@@ -14,14 +14,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "matrix.h"
-#include "chase_game.h"
 /*
  * 
  */
 int main(int argc, char** argv) {
-    //testGetMaxSumSubMatrix();
-    
+
     return (EXIT_SUCCESS);
 }
 
