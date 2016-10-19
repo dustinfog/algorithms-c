@@ -6,27 +6,30 @@
 
 #include <stdlib.h>
 #include "linked_list.h"
+#include "bst.h"
 
-LinkedList *createLinkedList() {
-    LinkedList *list = malloc(sizeof(LinkedList));
+linkedList *linkedListCreate(void) {
+    linkedList *list = malloc(sizeof(linkedList));
     list->length = 0;
     list->head = list->tail = 0;
     return list;
 }
 
-void freeLinkedList(LinkedList *list){
-    LinkedListNode *node = list->head;
-    while(node) {
-	LinkedListNode *next = node->next;
-	free(node);
-	node = next;
+void linkedListFree(linkedList *list, int freeNodes){
+    if (freeNodes) {
+    	linkedListNode *node = list->head;
+    	while(node) {
+	    linkedListNode *next = node->next;
+	    free(node);
+	    node = next;
+        }
     }
 
     free(list);
 }
 
-void appendLinkedListNode(LinkedList *list, void *value) {
-    LinkedListNode *node = malloc(sizeof(LinkedListNode));
+linkedListNode *linkedListPush(linkedList *list, int value) {
+    linkedListNode *node = malloc(sizeof(linkedListNode));
     node->value = value;
 
     if (!list->length) {
@@ -38,10 +41,11 @@ void appendLinkedListNode(LinkedList *list, void *value) {
     }
 
     list->length ++;
+
+    return node;
 }
 
-
-void appendLinkedList(LinkedList *list, LinkedList *another)
+void linkedListMerge(linkedList *list, linkedList *another)
 {
     if (!another->length) {
 	return;
@@ -50,4 +54,27 @@ void appendLinkedList(LinkedList *list, LinkedList *another)
     list->tail->next = another->head;
     another->head->prev = list->tail;
     list->tail = another->tail;
+
+    linkedListFree(another, 0);
+}
+
+int linkedListShift(linkedList *list)
+{
+    if (!list->length) {
+	return 0;
+    }
+
+    linkedListNode *node = list->head;
+    int value = node->value;
+    
+    list->head = node->next;
+    if (list->head) {
+    	list->head->prev = NULL;
+    }
+    
+    list->length --;
+
+    free(node);
+
+    return value;
 }

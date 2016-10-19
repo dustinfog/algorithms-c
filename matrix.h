@@ -24,10 +24,10 @@ extern "C" {
 	int height;
     } matrix;
 
-    int getDatum(matrix *m, int x, int y);
-    void setDatum(matrix *m, int x, int y, int v);
-    int virtualSum(matrix *m, int x, int y, int h);
-    int getMaxSumSubMatrix(matrix *m, int w, int h, int *x, int *y);
+    int matrixGetDatum(matrix *m, int x, int y);
+    void matrixSetDatum(matrix *m, int x, int y, int v);
+    int maxtrixVirtualSum(matrix *m, int x, int y, int h);
+    int matrixGetMaxSumSub(matrix *m, int w, int h, int *x, int *y);
 
 #ifdef __cplusplus
 }

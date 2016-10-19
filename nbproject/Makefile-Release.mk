@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/bst.o \
 	${OBJECTDIR}/chase_game.o \
 	${OBJECTDIR}/digraph.o \
 	${OBJECTDIR}/linked_list.o \
@@ -84,6 +85,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/bst.o: bst.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/bst.o bst.c
 
 ${OBJECTDIR}/chase_game.o: chase_game.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -172,6 +178,19 @@ ${TESTDIR}/tests/test_max_concat_string.o: tests/test_max_concat_string.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_max_concat_string.o tests/test_max_concat_string.c
 
+
+${OBJECTDIR}/bst_nomain.o: ${OBJECTDIR}/bst.o bst.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/bst.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/bst_nomain.o bst.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/bst.o ${OBJECTDIR}/bst_nomain.o;\
+	fi
 
 ${OBJECTDIR}/chase_game_nomain.o: ${OBJECTDIR}/chase_game.o chase_game.c 
 	${MKDIR} -p ${OBJECTDIR}

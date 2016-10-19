@@ -33,7 +33,7 @@ void testGetMaxSumSubMatrix() {
     matrix m = {data, 5, 3};
     
     int x, y;
-    int maxSum = getMaxSumSubMatrix(&m, 2, 2, &x, &y);
+    int maxSum = matrixGetMaxSumSub(&m, 2, 2, &x, &y);
 
     CU_ASSERT_EQUAL(x, 2);
     CU_ASSERT_EQUAL(y, 1);

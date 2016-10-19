@@ -17,21 +17,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    typedef struct LinkedListNode {
-	void *value;
-	struct LinkedListNode *prev;
-	struct LinkedListNode *next;
-    } LinkedListNode;
+    typedef struct linkedListNode {
+	int value;
+	struct linkedListNode *prev;
+	struct linkedListNode *next;
+    } linkedListNode;
     
-    typedef struct LinkedList {
+    typedef struct linkedList {
 	int length;
-	LinkedListNode *head, *tail;
-    } LinkedList;
+	linkedListNode *head, *tail;
+    } linkedList;
 
-    LinkedList *createLinkedList();
-    void freeLinkedList(LinkedList *list);
-    void appendLinkedListNode(LinkedList *list, void *value);
-    void appendLinkedList(LinkedList *list, LinkedList *another);
+    linkedList *linkedListCreate(void);
+    void linkedListFree(linkedList *list, int freeNodes);
+    linkedListNode *linkedListPush(linkedList *list, int value);
+    void linkedListMerge(linkedList *list, linkedList *another);
+    int linkedListShift(linkedList *list);
 
 #ifdef __cplusplus
 }

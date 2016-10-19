@@ -22,14 +22,17 @@ int clean_suite(void) {
     return 0;
 }
 
-void testAppendLinkedListNode() {
-    LinkedList* list = createLinkedList();
-    appendLinkedListNode(list, (void *) 1);
-    CU_ASSERT_EQUAL((int)list->head->value, 1);
-    appendLinkedListNode(list, (void *) 2);
-    CU_ASSERT_EQUAL((int)list->tail->value, 2);
+void testLinkedListNodePush() {
+    linkedList* list = linkedListCreate();
+    linkedListPush(list, 1);
+    CU_ASSERT_EQUAL(list->head->value, 1);
+    linkedListPush(list, 2);
+    CU_ASSERT_EQUAL(list->tail->value, 2);
     CU_ASSERT_EQUAL(list->length, 2);
-    freeLinkedList(list);
+    int value = linkedListShift(list);
+    CU_ASSERT_EQUAL(value, 1);
+    CU_ASSERT_EQUAL(list->length, 1); 
+    linkedListFree(list, 1);
 }
 
 int main() {
@@ -49,7 +52,7 @@ int main() {
     /* Add the tests to the suite */
     if (//(NULL == CU_add_test(pSuite, "testCreateLinkedList", testCreateLinkedList)) ||
           //  (NULL == CU_add_test(pSuite, "testFreeLinkedList", testFreeLinkedList)) ||
-            (NULL == CU_add_test(pSuite, "testAppendLinkedListNode", testAppendLinkedListNode))) {
+            (NULL == CU_add_test(pSuite, "testAppendLinkedListNode", testLinkedListNodePush))) {
         CU_cleanup_registry();
         return CU_get_error();
     }

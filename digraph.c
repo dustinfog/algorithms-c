@@ -10,25 +10,25 @@
 #include <string.h>
 
 #include "digraph.h"
- void seekPath(Digraph *graph, int index, int *maxLen, int *paths, int *checked);
+ void seekPath(digraph *graph, int index, int *maxLen, int *paths, int *checked);
 
-DigraphNode *createDigraphNode(int *nextIndices, int numNexts)
+digraphNode *digraphNodeCreate(int *nextIndices, int numNexts)
 {
-    DigraphNode *node = malloc(sizeof(DigraphNode) + sizeof(int) * numNexts);
+    digraphNode *node = malloc(sizeof(digraphNode) + sizeof(int) * numNexts);
     node->numNexts = numNexts;
     memcpy(node->nextIndices, nextIndices, numNexts * sizeof(int) / sizeof(char));
     return node;
 }
 
-Digraph *createDigraph()
+digraph *digraphCreate()
 {
-    Digraph *digraph = malloc(sizeof(Digraph));
+    digraph *digraph = malloc(sizeof(digraph));
     digraph->numNodes = 0;
      
     return digraph;
  }
 
-Digraph *appendDigraphNode(Digraph *graph, DigraphNode *node)
+digraph *digraphAdd(digraph *graph, digraphNode *node)
 {
    graph = realloc(graph, sizeof(graph) + sizeof(void *) * ( graph->numNodes + 1));  
    graph->nodes[graph->numNodes] = node; 
@@ -37,7 +37,7 @@ Digraph *appendDigraphNode(Digraph *graph, DigraphNode *node)
    return graph;
 }
 
- void freeDigraph(Digraph *digraph)
+ void freeDigraph(digraph *digraph)
  {
      for(int i = 0; i < digraph->numNodes; i ++)
      {
@@ -46,7 +46,7 @@ Digraph *appendDigraphNode(Digraph *graph, DigraphNode *node)
      free(digraph);
  }
 
- int findLongestPath(Digraph *digraph)
+ int findLongestPath(digraph *digraph)
  {
      int numPaths = digraph->numNodes * digraph->numNodes;
      int *paths = malloc(sizeof(void *) * numPaths);
@@ -75,9 +75,9 @@ Digraph *appendDigraphNode(Digraph *graph, DigraphNode *node)
 
  
 #define DIGRAPH_PATH(digraph, paths, from, to) *((paths) + (to) * (digraph)->numNodes + (from))
- void seekPath(Digraph *graph, int index, int *maxLen, int *paths, int *checked)
+ void seekPath(digraph *graph, int index, int *maxLen, int *paths, int *checked)
  {
-     DigraphNode *node = *(graph->nodes + index);
+     digraphNode *node = *(graph->nodes + index);
      if(*(checked + index)) {
 	 return;
      }

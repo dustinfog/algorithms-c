@@ -23,21 +23,21 @@ int clean_suite(void) {
 }
 
 void testHasEdge() {
-    Digraph* digraph = createDigraph();
-    DigraphNode *node;
+    digraph* digraph = digraphCreate();
+    digraphNode *node;
     for(int i = 0; i < 5; i ++)
     {
 	int next = i == 4 ? -1 : i + 1; 
-	node = createDigraphNode(&next, 1);
-	digraph = appendDigraphNode(digraph, node);
+	node = digraphNodeCreate(&next, 1);
+	digraph = digraphAdd(digraph, node);
     }
     
     int longest = findLongestPath(digraph);
     CU_ASSERT_EQUAL(4, longest);
    
     int nexts[] = {0, 2};
-    node = createDigraphNode(nexts, 2);
-    digraph = appendDigraphNode(digraph, node); 
+    node = digraphNodeCreate(nexts, 2);
+    digraph = digraphAdd(digraph, node); 
     longest = findLongestPath(digraph);
     
     CU_ASSERT_EQUAL(5, longest);

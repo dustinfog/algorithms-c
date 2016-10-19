@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>bst.h</itemPath>
       <itemPath>chase_game.h</itemPath>
       <itemPath>digraph.h</itemPath>
       <itemPath>linked_list.h</itemPath>
@@ -17,6 +18,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>bst.c</itemPath>
       <itemPath>chase_game.c</itemPath>
       <itemPath>digraph.c</itemPath>
       <itemPath>linked_list.c</itemPath>
@@ -76,6 +78,10 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="bst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="bst.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="chase_game.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="chase_game.h" ex="false" tool="3" flavor2="0">
@@ -169,6 +175,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="bst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="bst.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="chase_game.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="chase_game.h" ex="false" tool="3" flavor2="0">

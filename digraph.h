@@ -23,22 +23,22 @@ extern "C" {
 
 #define DIGRAPH_EDGE(digraph, from, to) *((digraph)->edges + (to) * (digraph)->numVertices + (from))
 
-    typedef struct DigraphNode {
+    typedef struct digraphNode {
 	int value;
 	int numNexts;
 	int nextIndices[];
-    } DigraphNode;
+    } digraphNode;
     
-    typedef struct Digraph {
+    typedef struct digraph {
 	int numNodes;
-	DigraphNode *nodes[];
-    } Digraph;
+	digraphNode *nodes[];
+    } digraph;
 
-    DigraphNode *createDigraphNode(int *nextIndices, int numNexts);
-    Digraph  *appendDigraphNode(Digraph *graph, DigraphNode *node);
-    Digraph *createDigraph();
-    void freeDigraph(Digraph *digraph);
-    int findLongestPath(Digraph *digraph);
+    digraphNode *digraphNodeCreate(int *nextIndices, int numNexts);
+    digraph  *digraphAdd(digraph *graph, digraphNode *node);
+    digraph *digraphCreate();
+    void freeDigraph(digraph *digraph);
+    int findLongestPath(digraph *digraph);
 
 #ifdef __cplusplus
 }
