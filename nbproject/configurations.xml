@@ -30,6 +30,9 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f6" displayName="Test BST" projectFiles="true" kind="TEST">
+        <itemPath>tests/test_bst.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1"
                      displayName="Test chase game"
                      projectFiles="true"
@@ -130,6 +133,14 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f6">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -147,6 +158,8 @@
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_bst.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_chase_game.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -227,6 +240,14 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f6">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -244,6 +265,8 @@
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_bst.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_chase_game.c" ex="false" tool="0" flavor2="0">
       </item>

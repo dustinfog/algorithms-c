@@ -20,6 +20,9 @@ void linkedListFree(linkedList *list, int freeNodes){
     	linkedListNode *node = list->head;
     	while(node) {
 	    linkedListNode *next = node->next;
+	    if (next) {
+	    	next->prev = NULL;
+	    }
 	    free(node);
 	    node = next;
         }
@@ -34,8 +37,10 @@ linkedListNode *linkedListPush(linkedList *list, int value) {
 
     if (!list->length) {
 	list->head = list->tail = node;	
+	node->prev = node->next = NULL;
     } else {
     	node->prev = list->tail;
+	node->next = NULL;
     	list->tail->next = node;
 	list->tail = node;
     }

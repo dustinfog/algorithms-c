@@ -8,7 +8,8 @@
 #include "bst.h"
 #include "linked_list.h"
 
-binarySearchTreeNode *createBinarySearchTreeNode(int value);
+binarySearchTreeNode *binarySearchTreeNodeCreate(int value);
+void binarySearchTreeNodeFree(binarySearchTreeNode *node);
 
 binarySearchTree *binarySearchTreeCreate() {
     binarySearchTree *tree = malloc(sizeof(binarySearchTree));
@@ -18,6 +19,7 @@ binarySearchTree *binarySearchTreeCreate() {
 }
 
 void binarySearchTreeFree(binarySearchTree *tree) {
+    binarySearchTreeNodeFree(tree->root);
     free(tree);
 }
 
@@ -35,22 +37,21 @@ binarySearchTreeNode *binarySearchTreePut(binarySearchTree *tree, int value) {
 	    parent = itrNode;
 	    if (value > itrNode->value) {
 		itrNode = itrNode->right;
-		left = 1;
+		left = 0;
 	    } else {
 		itrNode = itrNode->left;
-		left = 0;
+		left = 1;
 	    }
 	}
 	
-	node = createBinarySearchTreeNode(value);
+	node = binarySearchTreeNodeCreate(value);
 	if (left) {
 	    parent->left = node;
 	} else {
 	    parent->right = node;
 	}
-	
     } else {
-	node = createBinarySearchTreeNode(value);
+	node = binarySearchTreeNodeCreate(value);
 	tree->root = node;
     }
 
@@ -58,19 +59,21 @@ binarySearchTreeNode *binarySearchTreePut(binarySearchTree *tree, int value) {
     return node;
 }
 
-binarySearchTreeNode *createBinarySearchTreeNode(int value) {
+binarySearchTreeNode *binarySearchTreeNodeCreate(int value) {
     binarySearchTreeNode *node = malloc(sizeof(binarySearchTreeNode));
     node->value = value; 
+    node->left = NULL;
+    node->right = NULL;
 
     return node;
 }
 
-void freeBinarySearchTreeNode(binarySearchTreeNode *node) {
-    linkedList *list = linkedListCreate()
-    if (node->left) {
-	freeBinarySearchTreeNode(node->left);
-    } else if(node->right) {
-	freeBinarySearchTreeNode(node->right);
+void binarySearchTreeNodeFree(binarySearchTreeNode *node) {
+    if (node == NULL) {
+	return;
     }
+    binarySearchTreeNodeFree(node->left);
+    binarySearchTreeNodeFree(node->right);
+    
     free(node);
 }
