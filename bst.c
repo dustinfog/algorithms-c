@@ -6,7 +6,6 @@
 
 #include <stdlib.h>
 #include "bst.h"
-#include "linked_list.h"
 
 binarySearchTreeNode *binarySearchTreeNodeCreate(int value);
 void binarySearchTreeNodeFree(binarySearchTreeNode *node);
