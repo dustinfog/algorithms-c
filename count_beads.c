@@ -19,44 +19,39 @@ int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end) {
 
     int colorCount = 0;
     int minLength = beadNum;
-    int front = 0, back = 0;
-    int follow = 0;
-    while (front < beadNum) {
+    *begin = *end = 0;
+    int front = -1, back = -1;
+    do {
         int *p;
-        if (!follow) {
+        while (colorCount < colorNum) {
+            back = (back + 1) % beadNum;
             p = colorCounts + beads[back];
 
             if (*p == 0) {
                 colorCount++;
-                if (colorCount == colorNum) {
-		    tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
-                    follow = 1;
-                }
             }
 
-            (*p) ++;
+            (*p)++;
+        }
 
-            back = (back + 1) % beadNum;
-        } else {
+        while (colorCount == colorNum && front < beadNum) {
+	    front ++;
             p = colorCounts + beads[front];
-            (*p) --;
+            (*p)--;
 
             if (*p == 0) {
                 colorCount--;
-		tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
-                follow = 0;
+                tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
             }
-
-            front++;
         }
-    }
+    } while (front < beadNum);
 
     free(colorCounts);
     return minLength;
 }
 
 void tryUpdateMinLength(int beadNum, int front, int back, int *minLength, int *begin, int *end) {
-    int length = beadNum * (back > front) + back - front + 1;
+    int length = beadNum * (back <= front) + back - front + 1;
 
     if (length < *minLength) {
         *minLength = length;
