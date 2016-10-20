@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/bst.o \
 	${OBJECTDIR}/chase_game.o \
+	${OBJECTDIR}/count_beads.o \
 	${OBJECTDIR}/digraph.o \
 	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
@@ -50,6 +51,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f6 \
 	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f2 \
@@ -61,6 +63,7 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/testLinkedList.o \
 	${TESTDIR}/tests/test_bst.o \
 	${TESTDIR}/tests/test_chase_game.o \
+	${TESTDIR}/tests/test_count_beads.o \
 	${TESTDIR}/tests/test_matrix.o \
 	${TESTDIR}/tests/test_max_concat_string.o
 
@@ -97,6 +100,11 @@ ${OBJECTDIR}/chase_game.o: chase_game.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chase_game.o chase_game.c
+
+${OBJECTDIR}/count_beads.o: count_beads.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/count_beads.o count_beads.c
 
 ${OBJECTDIR}/digraph.o: digraph.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -138,6 +146,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/test_chase_game.o ${OBJECTFILES:%.o=%_
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -lcunit 
 
+${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/test_count_beads.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c}   -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS} -lcunit 
+
 ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/testDigraph.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} -lcunit 
@@ -165,6 +177,12 @@ ${TESTDIR}/tests/test_chase_game.o: tests/test_chase_game.c
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_chase_game.o tests/test_chase_game.c
+
+
+${TESTDIR}/tests/test_count_beads.o: tests/test_count_beads.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_count_beads.o tests/test_count_beads.c
 
 
 ${TESTDIR}/tests/testDigraph.o: tests/testDigraph.c 
@@ -215,6 +233,19 @@ ${OBJECTDIR}/chase_game_nomain.o: ${OBJECTDIR}/chase_game.o chase_game.c
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/chase_game_nomain.o chase_game.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/chase_game.o ${OBJECTDIR}/chase_game_nomain.o;\
+	fi
+
+${OBJECTDIR}/count_beads_nomain.o: ${OBJECTDIR}/count_beads.o count_beads.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/count_beads.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/count_beads_nomain.o count_beads.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/count_beads.o ${OBJECTDIR}/count_beads_nomain.o;\
 	fi
 
 ${OBJECTDIR}/digraph_nomain.o: ${OBJECTDIR}/digraph.o digraph.c 
@@ -288,6 +319,7 @@ ${OBJECTDIR}/max_concat_string_nomain.o: ${OBJECTDIR}/max_concat_string.o max_co
 	then  \
 	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f7 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \

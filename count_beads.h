@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   count_beads.h
+ * Author: panzd
+ *
+ * Created on October 20, 2016, 7:09 PM
+ */
+
+#ifndef COUNT_BEADS_H
+#define COUNT_BEADS_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* COUNT_BEADS_H */
+
