@@ -25,7 +25,7 @@ int clean_suite(void) {
 #define BEAD_NUM 7
 
 void testCountBeads() {
-    int beads[] = {0, 1, 0, 0, 2, 0, 0};
+    int beads[] = {0, 1, 0, 0, 0, 2, 0};
     int beadNum = BEAD_NUM;
     int colorNum = 3;
     int begin = -1;
@@ -34,8 +34,8 @@ void testCountBeads() {
  
     printf("%d %d %d\n", result, begin, end);
     CU_ASSERT_EQUAL(4, result);
-    CU_ASSERT_EQUAL(1, begin);
-    CU_ASSERT_EQUAL(4, end);
+    CU_ASSERT_EQUAL(5, begin);
+    CU_ASSERT_EQUAL(1, end);
     
 }
 
