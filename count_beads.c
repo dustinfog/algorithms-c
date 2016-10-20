@@ -10,8 +10,6 @@
 #include <string.h>
 #include "count_beads.h"
 
-void tryUpdateMinLength(int beadNum, int front, int back, int *minLength, int *begin, int *end);
-
 int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end) {
     int trunkSize = sizeof (int) * colorNum;
     int *colorCounts = malloc(trunkSize);
@@ -35,28 +33,25 @@ int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end) {
         }
 
         while (colorCount == colorNum && front < beadNum) {
-	    front ++;
+            front++;
             p = colorCounts + beads[front];
             (*p)--;
 
             if (*p == 0) {
+                int length = beadNum * (back <= front) + back - front + 1;
+
+                if (length < minLength) {
+                    minLength = length;
+
+                    *begin = front;
+                    *end = back;
+                }
+
                 colorCount--;
-                tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
             }
         }
     } while (front < beadNum);
 
     free(colorCounts);
     return minLength;
-}
-
-void tryUpdateMinLength(int beadNum, int front, int back, int *minLength, int *begin, int *end) {
-    int length = beadNum * (back <= front) + back - front + 1;
-
-    if (length < *minLength) {
-        *minLength = length;
-
-        *begin = front;
-        *end = back;
-    }
 }
