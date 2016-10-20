@@ -18,6 +18,15 @@
 extern "C" {
 #endif
 
+    /**
+     * 一串首尾相连的珠子(m个)，有N种颜色(N<=10)
+     * @param beads
+     * @param beadNum
+     * @param colorNum
+     * @param begin
+     * @param end
+     * @return 
+     */
 int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end);
 
 #ifdef __cplusplus
