@@ -6,60 +6,62 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
+#include <string.h>
 #include "count_beads.h"
 
+void tryUpdateMinLength(int beadNum, int front, int back, int *minLength, int *begin, int *end);
 
-int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end)
-{
-    int *colorCounts = malloc(sizeof(int) * colorNum);
-    for (int i = 0; i < colorNum; i ++)
-    {
-	*(colorCounts + i) = 0;
-    }
-    
+int countBeads(int beads[], int beadNum, int colorNum, int *begin, int *end) {
+    int trunkSize = sizeof (int) * colorNum;
+    int *colorCounts = malloc(trunkSize);
+    memset(colorCounts, 0, trunkSize);
+
     int colorCount = 0;
-    for (int i = 0; i < beadNum; i ++)
-    {
-	int *p = colorCounts + beads[i];
-	if (*p == 0) {
-	    colorCount += 2;
-	}
+    int minLength = beadNum;
+    int front = 0, back = 0;
+    int follow = 0;
+    while (front < beadNum) {
+        int *p;
+        if (!follow) {
+            p = colorCounts + beads[back];
 
-	*p += 2;
-    }
+            if (*p == 0) {
+                colorCount++;
+                if (colorCount == colorNum) {
+		    tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
+                    follow = 1;
+                }
+            }
 
-    for (int i = 0; i < colorNum; i ++)
-    {
-	printf("====%d\n", *(colorCounts + i));
-    }
+            (*p) ++;
 
-    *begin = -1;
-    *end = -1;
-    int front = 0, back = beadNum - 1;
-    while(*begin == -1 || *end == -1)
-    {
-	int *p = colorCounts + beads[front];
-	if (*begin == -1 && *p - 1 > 0) {
-	   front ++;
-	   *p -= 1;
-	} else {
-	   *begin = front;
-	}
-	
-	p = colorCounts + beads[back];
-	if (*end == -1 && *p - 1 > 0) {
-	    back --;
-	    *p -= 1;
-	} else {
-	    *end = back;
-	}
+            back = (back + 1) % beadNum;
+        } else {
+            p = colorCounts + beads[front];
+            (*p) --;
+
+            if (*p == 0) {
+                colorCount--;
+		tryUpdateMinLength(beadNum, front, back, &minLength, begin, end);
+                follow = 0;
+            }
+
+            front++;
+        }
     }
 
     free(colorCounts);
+    return minLength;
+}
 
-    if (*begin < *end) {
-	return *end - *begin + 1;
-    } else {
-	return beadNum - *begin + *end + 1;
+void tryUpdateMinLength(int beadNum, int front, int back, int *minLength, int *begin, int *end) {
+    int length = beadNum * (back > front) + back - front + 1;
+
+    if (length < *minLength) {
+        *minLength = length;
+
+        *begin = front;
+        *end = back;
     }
 }
