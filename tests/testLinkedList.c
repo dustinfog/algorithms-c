@@ -35,6 +35,39 @@ void testLinkedListNodePush() {
     linkedListFree(list, 1);
 }
 
+void testLinkedListAppend1() {
+    linkedList* list = linkedListCreate();
+    linkedListPush(list, 1); 
+    linkedListPush(list, 2); 
+    linkedListPush(list, 2); 
+    linkedListPush(list, 3); 
+
+    linkedList* another = linkedListCreate();
+    linkedListPush(list, 2); 
+    linkedListPush(list, 3); 
+    linkedListPush(list, 4); 
+
+    linkedList *merged = linkedListAppend1(list, another);
+    if (merged)
+    {
+	int value = linkedListShift(merged);
+	CU_ASSERT_EQUAL(1, value);
+	value = linkedListShift(merged);
+	CU_ASSERT_EQUAL(2, value);
+	value = linkedListShift(merged);
+	CU_ASSERT_EQUAL(2, value);
+	value = linkedListShift(merged);
+	CU_ASSERT_EQUAL(3, value);
+	value = linkedListShift(merged);
+	CU_ASSERT_EQUAL(4, value);
+	
+	linkedListFree(merged, 1);
+    }
+
+    linkedListFree(list, 1);
+    linkedListFree(another, 1);
+}
+
 int main() {
     CU_pSuite pSuite = NULL;
 

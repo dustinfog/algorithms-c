@@ -31,8 +31,16 @@ extern "C" {
     linkedList *linkedListCreate(void);
     void linkedListFree(linkedList *list, int freeNodes);
     linkedListNode *linkedListPush(linkedList *list, int value);
-    void linkedListMerge(linkedList *list, linkedList *another);
     int linkedListShift(linkedList *list);
+    void linkedListAppend(linkedList *list, linkedList *another);
+
+    /**
+     * 两个非降序链表的并集，1->2->3 和 2->3->5 并为 1->2->3->5
+     * 另外只能输出结果，不能修改两个链表的数据。
+     * @param list
+     * @param another
+     */
+    linkedList *linkedListAppend1(linkedList *list, linkedList *another);
 
 #ifdef __cplusplus
 }
