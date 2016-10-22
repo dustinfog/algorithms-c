@@ -41,8 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/digraph.o \
 	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/matrix.o \
-	${OBJECTDIR}/max_concat_string.o
+	${OBJECTDIR}/matrix.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -125,11 +124,6 @@ ${OBJECTDIR}/matrix.o: matrix.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix.o matrix.c
-
-${OBJECTDIR}/max_concat_string.o: max_concat_string.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_concat_string.o max_concat_string.c
 
 # Subprojects
 .build-subprojects:
@@ -298,19 +292,6 @@ ${OBJECTDIR}/matrix_nomain.o: ${OBJECTDIR}/matrix.o matrix.c
 	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix_nomain.o matrix.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/matrix.o ${OBJECTDIR}/matrix_nomain.o;\
-	fi
-
-${OBJECTDIR}/max_concat_string_nomain.o: ${OBJECTDIR}/max_concat_string.o max_concat_string.c 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/max_concat_string.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_concat_string_nomain.o max_concat_string.c;\
-	else  \
-	    ${CP} ${OBJECTDIR}/max_concat_string.o ${OBJECTDIR}/max_concat_string_nomain.o;\
 	fi
 
 # Run Test Targets

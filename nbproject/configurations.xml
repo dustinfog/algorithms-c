@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="97">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -10,7 +10,6 @@
       <itemPath>digraph.h</itemPath>
       <itemPath>linked_list.h</itemPath>
       <itemPath>matrix.h</itemPath>
-      <itemPath>max_concat_string.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -26,7 +25,6 @@
       <itemPath>linked_list.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>matrix.c</itemPath>
-      <itemPath>max_concat_string.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -88,6 +86,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
       </compileType>
       <item path="bst.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -105,9 +108,19 @@
       </item>
       <item path="digraph.h" ex="false" tool="3" flavor2="0">
       </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -116,6 +129,9 @@
       <folder path="TestFiles/f2">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -124,6 +140,9 @@
       <folder path="TestFiles/f3">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -132,6 +151,9 @@
       <folder path="TestFiles/f4">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -140,6 +162,9 @@
       <folder path="TestFiles/f5">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -148,6 +173,9 @@
       <folder path="TestFiles/f6">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -156,6 +184,9 @@
       <folder path="TestFiles/f7">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -170,10 +201,6 @@
       <item path="matrix.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="max_concat_string.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="max_concat_string.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -209,6 +236,11 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
       </compileType>
       <item path="bst.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -226,9 +258,19 @@
       </item>
       <item path="digraph.h" ex="false" tool="3" flavor2="0">
       </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -237,6 +279,9 @@
       <folder path="TestFiles/f2">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -245,6 +290,9 @@
       <folder path="TestFiles/f3">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -253,6 +301,9 @@
       <folder path="TestFiles/f4">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -261,6 +312,9 @@
       <folder path="TestFiles/f5">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -269,6 +323,9 @@
       <folder path="TestFiles/f6">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -277,6 +334,9 @@
       <folder path="TestFiles/f7">
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
@@ -291,10 +351,6 @@
       <item path="matrix.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="max_concat_string.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="max_concat_string.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
