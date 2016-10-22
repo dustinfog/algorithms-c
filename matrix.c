@@ -8,22 +8,18 @@
 #include <string.h>
 #include "matrix.h"
 
-#define getIndex(w, x, y) (y) * (w) + (x)
-
-int matrixGetDatum(matrix *m, int x, int y)
-{
-    return *(m->data + getIndex(m->with, x, y));
+int matrixGetDatum(matrix *m, int x, int y) {
+    return matrixDatum(m, x, y);
 }
 
-void matrixSetDatum(matrix *m, int x, int y, int v)
-{
-    *(m->data + getIndex(m->with, x, y)) = v;
+void matrixSetDatum(matrix *m, int x, int y, int v) {
+    matrixDatum(m, x, y) = v;
 }
 
 int maxtrixVirtualSum(matrix *m, int x, int y, int h) {
     int sum = 0;
-    for(int vi = 0; vi < h; vi ++) {
-	sum += matrixGetDatum(m, x, y +vi); 
+    for (int vi = 0; vi < h; vi++) {
+        sum += matrixGetDatum(m, x, y + vi);
     }
 
     return sum;
@@ -45,36 +41,77 @@ int maxtrixVirtualSum(matrix *m, int x, int y, int h) {
  * @param y
  * @return 
  */
-int matrixGetMaxSumSub(matrix *m, int w, int h, int *x, int *y)
-{
-    int *vSumBuff = malloc(sizeof(int) * m->with * m->height);
-    for(int i = 0; i < m->with *m->height; i ++) {
-	* (vSumBuff + i) = -1;
+int matrixGetMaxSumSub(matrix *m, int w, int h, int *x, int *y) {
+    int *vSumBuff = malloc(sizeof (int) * m->width * m->height);
+    for (int i = 0; i < m->width * m->height; i++) {
+        * (vSumBuff + i) = -1;
     }
-    matrix subM = { vSumBuff, w, h };
+    matrix subM = {vSumBuff, w, h};
     int maxSum = 0;
 
-    for(int i = 0; i <= m->with - w; i ++) {
-	for (int j = 0; j <= m->height - h; j ++) {
-	    int sum = 0;
-	    for(int subX = i; subX < i + w; subX ++) {
-		int vSum = matrixGetDatum(&subM, subX, j);
-		if (vSum == -1) {
-		    vSum = maxtrixVirtualSum(m, subX, j, h);
-		    matrixSetDatum(&subM, subX, j, vSum);
-		} 
+    for (int i = 0; i <= m->width - w; i++) {
+        for (int j = 0; j <= m->height - h; j++) {
+            int sum = 0;
+            for (int subX = i; subX < i + w; subX++) {
+                int vSum = matrixGetDatum(&subM, subX, j);
+                if (vSum == -1) {
+                    vSum = maxtrixVirtualSum(m, subX, j, h);
+                    matrixSetDatum(&subM, subX, j, vSum);
+                }
 
-		sum += vSum;
-	    }
+                sum += vSum;
+            }
 
-	    if (sum > maxSum) {
-		maxSum = sum;
-		*x = i;
-		*y = j;
-	    }
-	}
+            if (sum > maxSum) {
+                maxSum = sum;
+                *x = i;
+                *y = j;
+            }
+        }
     }
-    
+
     free(vSumBuff);
     return maxSum;
+}
+
+int isDeriveFromZero(matrix *m) {
+    for (int y = 0; y < m->height; y++) {
+        for (int x = 0; x < m->width; x++) {
+            int datumXY = matrixDatum(m, x, y);
+            int datumXYR, datumXYD;
+
+            if (datumXY == 0) {
+                continue;
+            }
+
+            if (x < m->width - 1) {
+                datumXYR = matrixDatum(m, x + 1, y);
+                if (datumXYR > datumXY) {
+                    datumXY = 0;
+                    matrixDatum(m, x + 1, y) = datumXYR - datumXY;
+                } else {
+                    datumXY = datumXY - datumXYR;
+                    matrixDatum(m, x + 1, y) = 0;
+                }
+            }
+
+            if (datumXY == 0) {
+                continue;
+            }
+
+            if (y == m->height - 1) {
+                return 0;
+            }
+
+            datumXYD = matrixDatum(m, x, y + 1);
+
+            if (datumXY > datumXYD) {
+                return 0;
+            }
+
+            datumXY = 0;
+            matrixDatum(m, x, y + 1) = datumXYD - datumXY;
+        }
+    }
+    return 1;
 }

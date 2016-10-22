@@ -40,6 +40,21 @@ void testGetMaxSumSubMatrix() {
     CU_ASSERT_EQUAL(maxSum, 17);
 }
 
+void testIsDeriveFromZero() {
+    int data[] = {
+	1, 2, 1, 0,
+        0, 1, 2, 2,
+    	0, 0, 1, 2,
+    };
+
+    matrix m = {
+	data, 4, 3
+    };
+
+    int result = isDeriveFromZero(& m);
+    CU_ASSERT_TRUE(result);
+}
+
 int main() {
     CU_pSuite pSuite = NULL;
 
