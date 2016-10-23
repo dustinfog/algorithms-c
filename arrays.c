@@ -52,7 +52,7 @@ void insertSort(int arr[], int len) {
 void _quickSort(int arr[], int from, int to);
 
 void quickSort(int arr[], int len) {
-    //array_shuffle(arr, len);
+    array_shuffle(arr, len);
 
     _quickSort(arr, 0, len - 1);
 }
