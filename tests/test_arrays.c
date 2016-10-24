@@ -49,7 +49,7 @@ void testInsertSort() {
 }
 
 void testQuickSort() {
-    int arr[] = {5, 8, 6, 7, 7, 4};
+    int arr[] = {6, 8, 5, 7, 4, 7};
     int len = 6;
     quickSort(arr, len);
 

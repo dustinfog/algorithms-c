@@ -6,11 +6,16 @@
 
 #include <limits.h>
 #include <stdlib.h>
+#include <time.h>
 #include <mach/mach_init.h>
 
 #include "arrays.h"
 
 void array_exchange(int arr[], int pos1, int pos2) {
+    if (pos1 == pos2) {
+	return;
+    }
+    
     int value1 = arr[pos1];
     arr[pos1] = arr[pos2];
     arr[pos2] = value1;
@@ -18,7 +23,9 @@ void array_exchange(int arr[], int pos1, int pos2) {
 
 void array_shuffle(int arr[], int len) {
     for (int i = 0; i < len; i++) {
-        array_exchange(arr, i, rand() % len);
+	srand((int)time(0));
+	int r = rand() % len;
+        array_exchange(arr, i, r);
     }
 }
 
@@ -54,7 +61,7 @@ void _quickSort(int arr[], int from, int to);
 void quickSort(int arr[], int len) {
     array_shuffle(arr, len);
 
-    _quickSort(arr, 0, len - 1);
+    _quickSort(arr, 0, len);
 }
 
 void _quickSort(int arr[], int from, int to) {
@@ -69,8 +76,8 @@ void _quickSort(int arr[], int from, int to) {
     while (cursor < biggerStart) {
         int cur = arr[cursor];
         if (cur > sample) {
-            array_exchange(arr, cursor, biggerStart);
             biggerStart--;
+            array_exchange(arr, cursor, biggerStart);
         } else {
             if (cur < sample) {
                 array_exchange(arr, cursor - equalLength, cursor);
@@ -81,6 +88,6 @@ void _quickSort(int arr[], int from, int to) {
         }
     }
 
-    _quickSort(arr, from, cursor - equalLength - 1);
-    _quickSort(arr, cursor, to);
+    _quickSort(arr, from, cursor - equalLength);
+    _quickSort(arr, biggerStart, to);
 }
