@@ -11,6 +11,7 @@
       <itemPath>digraph.h</itemPath>
       <itemPath>linked_list.h</itemPath>
       <itemPath>matrix.h</itemPath>
+      <itemPath>max_diminishing_sub_array.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -27,6 +28,7 @@
       <itemPath>linked_list.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>matrix.c</itemPath>
+      <itemPath>max_diminishing_sub_array.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -71,6 +73,12 @@
                      kind="TEST">
         <itemPath>tests/test_matrix.c</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="Test Max Diminishing Sub array"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/test_max_diminishing.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -90,6 +98,7 @@
       <compileType>
         <linkerTool>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -120,6 +129,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -127,6 +137,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -141,6 +152,18 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -151,6 +174,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -165,6 +189,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -175,6 +200,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -189,6 +215,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -199,6 +226,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f8</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
@@ -216,6 +244,10 @@
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="max_diminishing_sub_array.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="max_diminishing_sub_array.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
@@ -229,6 +261,8 @@
       <item path="tests/test_count_beads.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_matrix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_max_diminishing.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -254,6 +288,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
@@ -282,6 +317,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -289,6 +325,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -303,6 +340,18 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -313,6 +362,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -327,6 +377,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -337,6 +388,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
@@ -351,6 +403,7 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -361,6 +414,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f8</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
@@ -378,6 +432,10 @@
       </item>
       <item path="matrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="max_diminishing_sub_array.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="max_diminishing_sub_array.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/testDigraph.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/testLinkedList.c" ex="false" tool="0" flavor2="0">
@@ -391,6 +449,8 @@
       <item path="tests/test_count_beads.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_matrix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_max_diminishing.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

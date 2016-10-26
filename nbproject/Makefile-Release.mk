@@ -42,7 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/digraph.o \
 	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/matrix.o
+	${OBJECTDIR}/matrix.o \
+	${OBJECTDIR}/max_diminishing_sub_array.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -55,7 +56,8 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f2
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f3
 
 # Test Object Files
 TESTOBJECTFILES= \
@@ -65,7 +67,8 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/test_bst.o \
 	${TESTDIR}/tests/test_chase_game.o \
 	${TESTDIR}/tests/test_count_beads.o \
-	${TESTDIR}/tests/test_matrix.o
+	${TESTDIR}/tests/test_matrix.o \
+	${TESTDIR}/tests/test_max_diminishing.o
 
 # C Compiler Flags
 CFLAGS=
@@ -131,6 +134,11 @@ ${OBJECTDIR}/matrix.o: matrix.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix.o matrix.c
 
+${OBJECTDIR}/max_diminishing_sub_array.o: max_diminishing_sub_array.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_diminishing_sub_array.o max_diminishing_sub_array.c
+
 # Subprojects
 .build-subprojects:
 
@@ -165,6 +173,10 @@ ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/testLinkedList.o ${OBJECTFILES:%.o=%_n
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/test_matrix.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   -lcunit 
+
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/test_max_diminishing.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 
 ${TESTDIR}/tests/test_arrays.o: tests/test_arrays.c 
@@ -207,6 +219,12 @@ ${TESTDIR}/tests/test_matrix.o: tests/test_matrix.c
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_matrix.o tests/test_matrix.c
+
+
+${TESTDIR}/tests/test_max_diminishing.o: tests/test_max_diminishing.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_max_diminishing.o tests/test_max_diminishing.c
 
 
 ${OBJECTDIR}/arrays_nomain.o: ${OBJECTDIR}/arrays.o arrays.c 
@@ -313,6 +331,19 @@ ${OBJECTDIR}/matrix_nomain.o: ${OBJECTDIR}/matrix.o matrix.c
 	    ${CP} ${OBJECTDIR}/matrix.o ${OBJECTDIR}/matrix_nomain.o;\
 	fi
 
+${OBJECTDIR}/max_diminishing_sub_array_nomain.o: ${OBJECTDIR}/max_diminishing_sub_array.o max_diminishing_sub_array.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/max_diminishing_sub_array.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_diminishing_sub_array_nomain.o max_diminishing_sub_array.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/max_diminishing_sub_array.o ${OBJECTDIR}/max_diminishing_sub_array_nomain.o;\
+	fi
+
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
@@ -324,6 +355,7 @@ ${OBJECTDIR}/matrix_nomain.o: ${OBJECTDIR}/matrix.o matrix.c
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

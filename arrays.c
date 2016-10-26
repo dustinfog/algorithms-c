@@ -13,18 +13,27 @@
 
 void array_exchange(int arr[], int pos1, int pos2) {
     if (pos1 == pos2) {
-	return;
+        return;
     }
-    
+
     int value1 = arr[pos1];
     arr[pos1] = arr[pos2];
     arr[pos2] = value1;
 }
 
+void array_reverse(int arr[], int len) {
+    int i = 0, j = len - 1;
+    while (i < j) {
+        array_exchange(arr, i, j);
+        i++;
+        j--;
+    }
+}
+
 void array_shuffle(int arr[], int len) {
     for (int i = 0; i < len; i++) {
-	srand((int)time(0));
-	int r = rand() % len;
+        srand((int) time(0));
+        int r = rand() % len;
         array_exchange(arr, i, r);
     }
 }
@@ -49,9 +58,9 @@ void insertSort(int arr[], int len) {
         int sample = arr[i];
         for (int j = i; j > 0; j--) {
             if (arr[j - 1] <= sample) {
-		break;
+                break;
             }
-	    array_exchange(arr, j, j - 1);
+            array_exchange(arr, j, j - 1);
         }
     }
 }
