@@ -9,6 +9,7 @@
       <itemPath>chase_game.h</itemPath>
       <itemPath>count_beads.h</itemPath>
       <itemPath>digraph.h</itemPath>
+      <itemPath>find_in_rotated.h</itemPath>
       <itemPath>linked_list.h</itemPath>
       <itemPath>matrix.h</itemPath>
       <itemPath>max_diminishing_sub_array.h</itemPath>
@@ -25,6 +26,7 @@
       <itemPath>chase_game.c</itemPath>
       <itemPath>count_beads.c</itemPath>
       <itemPath>digraph.c</itemPath>
+      <itemPath>find_in_rotated.c</itemPath>
       <itemPath>linked_list.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>matrix.c</itemPath>
@@ -60,6 +62,12 @@
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/testDigraph.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9"
+                     displayName="Test Find In Rotated"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/test_find_in_rotated.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="Test Linked List"
@@ -101,6 +109,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
@@ -130,6 +139,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -137,6 +147,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -153,6 +164,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -164,6 +176,7 @@
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -174,6 +187,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -190,6 +204,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -200,6 +215,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -216,6 +232,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -228,12 +245,28 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f9">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="find_in_rotated.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="find_in_rotated.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -259,6 +292,8 @@
       <item path="tests/test_chase_game.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_count_beads.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_find_in_rotated.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_matrix.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -289,6 +324,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
@@ -318,6 +354,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -325,6 +362,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -341,6 +379,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -352,6 +391,7 @@
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -362,6 +402,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -378,6 +419,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -388,6 +430,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -404,6 +447,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -416,12 +460,28 @@
           <linkerDynSerch>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f9">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="find_in_rotated.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="find_in_rotated.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="linked_list.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
@@ -447,6 +507,8 @@
       <item path="tests/test_chase_game.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_count_beads.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/test_find_in_rotated.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/test_matrix.c" ex="false" tool="0" flavor2="0">
       </item>
