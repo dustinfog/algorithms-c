@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/count_beads.o \
 	${OBJECTDIR}/digraph.o \
 	${OBJECTDIR}/find_in_rotated.o \
+	${OBJECTDIR}/heap.o \
 	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/matrix.o \
@@ -57,6 +58,7 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f9 \
+	${TESTDIR}/TestFiles/f10 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f3
@@ -70,6 +72,7 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/test_chase_game.o \
 	${TESTDIR}/tests/test_count_beads.o \
 	${TESTDIR}/tests/test_find_in_rotated.o \
+	${TESTDIR}/tests/test_heap.o \
 	${TESTDIR}/tests/test_matrix.o \
 	${TESTDIR}/tests/test_max_diminishing.o
 
@@ -127,6 +130,11 @@ ${OBJECTDIR}/find_in_rotated.o: find_in_rotated.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/find_in_rotated.o find_in_rotated.c
 
+${OBJECTDIR}/heap.o: heap.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/heap.o heap.c
+
 ${OBJECTDIR}/linked_list.o: linked_list.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -178,6 +186,10 @@ ${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/test_find_in_rotated.o ${OBJECTFILES:%
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS}   -lcunit 
 
+${TESTDIR}/TestFiles/f10: ${TESTDIR}/tests/test_heap.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f10 $^ ${LDLIBSOPTIONS}   -lcunit 
+
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/testLinkedList.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   -lcunit 
@@ -225,6 +237,12 @@ ${TESTDIR}/tests/test_find_in_rotated.o: tests/test_find_in_rotated.c
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_find_in_rotated.o tests/test_find_in_rotated.c
+
+
+${TESTDIR}/tests/test_heap.o: tests/test_heap.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_heap.o tests/test_heap.c
 
 
 ${TESTDIR}/tests/testLinkedList.o: tests/testLinkedList.c 
@@ -323,6 +341,19 @@ ${OBJECTDIR}/find_in_rotated_nomain.o: ${OBJECTDIR}/find_in_rotated.o find_in_ro
 	    ${CP} ${OBJECTDIR}/find_in_rotated.o ${OBJECTDIR}/find_in_rotated_nomain.o;\
 	fi
 
+${OBJECTDIR}/heap_nomain.o: ${OBJECTDIR}/heap.o heap.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/heap.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/heap_nomain.o heap.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/heap.o ${OBJECTDIR}/heap_nomain.o;\
+	fi
+
 ${OBJECTDIR}/linked_list_nomain.o: ${OBJECTDIR}/linked_list.o linked_list.c 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/linked_list.o`; \
@@ -385,6 +416,7 @@ ${OBJECTDIR}/max_diminishing_sub_array_nomain.o: ${OBJECTDIR}/max_diminishing_su
 	    ${TESTDIR}/TestFiles/f7 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f9 || true; \
+	    ${TESTDIR}/TestFiles/f10 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
