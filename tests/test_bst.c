@@ -39,7 +39,12 @@ void testBinarySearchTree() {
     binarySearchTreePut(tree, 16);
    
     CU_ASSERT_EQUAL(tree->count, 7); 
+
+    int height = binarySearchTreeGetHeight(tree);
+    CU_ASSERT_EQUAL(5, height);
+    
     binarySearchTreeFree(tree);
+
 }
 
 int main() {

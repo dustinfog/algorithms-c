@@ -32,6 +32,7 @@ extern "C" {
     binarySearchTree *binarySearchTreeCreate();
     void binarySearchTreeFree(binarySearchTree *tree);
     binarySearchTreeNode *binarySearchTreePut(binarySearchTree *tree, int value);
+    int binarySearchTreeGetHeight(binarySearchTree *tree);
 
 
 #ifdef __cplusplus

@@ -9,6 +9,7 @@
 
 binarySearchTreeNode *binarySearchTreeNodeCreate(int value);
 void binarySearchTreeNodeFree(binarySearchTreeNode *node);
+int seekHeight(binarySearchTreeNode *node);
 
 binarySearchTree *binarySearchTreeCreate() {
     binarySearchTree *tree = malloc(sizeof(binarySearchTree));
@@ -75,4 +76,19 @@ void binarySearchTreeNodeFree(binarySearchTreeNode *node) {
     binarySearchTreeNodeFree(node->right);
     
     free(node);
+}
+
+
+int binarySearchTreeGetHeight(binarySearchTree *tree) {
+    return seekHeight(tree->root);	
+}
+
+int seekHeight(binarySearchTreeNode *node) {
+    if (!node) {
+	return 0;
+    }
+    int leftHeight = seekHeight(node->left);
+    int rightHeight = seekHeight(node->right);
+
+    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
 }
