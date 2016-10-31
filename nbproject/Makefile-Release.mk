@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/arrange_chars.o \
 	${OBJECTDIR}/arrays.o \
 	${OBJECTDIR}/bst.o \
 	${OBJECTDIR}/chase_game.o \
@@ -102,6 +103,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/arrange_chars.o: arrange_chars.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arrange_chars.o arrange_chars.c
 
 ${OBJECTDIR}/arrays.o: arrays.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -280,6 +286,19 @@ ${TESTDIR}/tests/test_print_successive.o: tests/test_print_successive.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_print_successive.o tests/test_print_successive.c
 
+
+${OBJECTDIR}/arrange_chars_nomain.o: ${OBJECTDIR}/arrange_chars.o arrange_chars.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/arrange_chars.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arrange_chars_nomain.o arrange_chars.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/arrange_chars.o ${OBJECTDIR}/arrange_chars_nomain.o;\
+	fi
 
 ${OBJECTDIR}/arrays_nomain.o: ${OBJECTDIR}/arrays.o arrays.c 
 	${MKDIR} -p ${OBJECTDIR}

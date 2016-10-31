@@ -13,14 +13,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "arrange_chars.h"
 
-/*
- * 一串首尾相连的珠子(m个)，有N种颜色(N<=10)，
- * 设计一个算法，取出其中一段，要求包含所有N中颜色，并使长度最短。
- * 并分析时间复杂度与空间复杂度。 
- */
 int main(int argc, char** argv) {
-
-    return (EXIT_SUCCESS);
+   arrangeChars("123"); 
+   return (EXIT_SUCCESS);
 }
 
