@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/arrange_array.o \
 	${OBJECTDIR}/arrange_chars.o \
 	${OBJECTDIR}/arrays.o \
 	${OBJECTDIR}/bst.o \
@@ -54,6 +55,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
+	${TESTDIR}/TestFiles/f12 \
 	${TESTDIR}/TestFiles/f8 \
 	${TESTDIR}/TestFiles/f6 \
 	${TESTDIR}/TestFiles/f1 \
@@ -70,6 +72,7 @@ TESTFILES= \
 TESTOBJECTFILES= \
 	${TESTDIR}/tests/testDigraph.o \
 	${TESTDIR}/tests/testLinkedList.o \
+	${TESTDIR}/tests/test_arrage_array.o \
 	${TESTDIR}/tests/test_arrays.o \
 	${TESTDIR}/tests/test_bst.o \
 	${TESTDIR}/tests/test_chase_game.o \
@@ -103,6 +106,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/arrange_array.o: arrange_array.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arrange_array.o arrange_array.c
 
 ${OBJECTDIR}/arrange_chars.o: arrange_chars.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -176,6 +184,10 @@ ${OBJECTDIR}/print_successive.o: print_successive.c
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
+${TESTDIR}/TestFiles/f12: ${TESTDIR}/tests/test_arrage_array.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f12 $^ ${LDLIBSOPTIONS}   -lcunit 
+
 ${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/test_arrays.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS}   -lcunit 
@@ -219,6 +231,12 @@ ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/test_max_diminishing.o ${OBJECTFILES:%
 ${TESTDIR}/TestFiles/f11: ${TESTDIR}/tests/test_print_successive.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f11 $^ ${LDLIBSOPTIONS}   -lcunit 
+
+
+${TESTDIR}/tests/test_arrage_array.o: tests/test_arrage_array.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_arrage_array.o tests/test_arrage_array.c
 
 
 ${TESTDIR}/tests/test_arrays.o: tests/test_arrays.c 
@@ -286,6 +304,19 @@ ${TESTDIR}/tests/test_print_successive.o: tests/test_print_successive.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/test_print_successive.o tests/test_print_successive.c
 
+
+${OBJECTDIR}/arrange_array_nomain.o: ${OBJECTDIR}/arrange_array.o arrange_array.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/arrange_array.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arrange_array_nomain.o arrange_array.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/arrange_array.o ${OBJECTDIR}/arrange_array_nomain.o;\
+	fi
 
 ${OBJECTDIR}/arrange_chars_nomain.o: ${OBJECTDIR}/arrange_chars.o arrange_chars.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -460,6 +491,7 @@ ${OBJECTDIR}/print_successive_nomain.o: ${OBJECTDIR}/print_successive.o print_su
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
+	    ${TESTDIR}/TestFiles/f12 || true; \
 	    ${TESTDIR}/TestFiles/f8 || true; \
 	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
