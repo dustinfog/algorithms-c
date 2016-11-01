@@ -20,6 +20,7 @@
  * abc、acb、bac、bca、cab和cba。
  */
 void arrangeChars(char *chars);
+void arrangeChars1(char *chars);
 
 #ifdef __cplusplus
 extern "C" {

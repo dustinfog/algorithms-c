@@ -12,6 +12,9 @@
 
 int permutate(int arr[], int len);
 
+void arrangeSubChars(char *chars, int from, int len);
+void chars_exchange(char arr[], int pos1, int pos2);
+
 /**
  * 输入一个字符串，打印出该字符串中字符的所有排列。
  * 例如输入字符串abc，则输出由字符a、b、c所能排列出来的所有字符串
@@ -32,6 +35,38 @@ void arrangeChars(char *chars){
 
         printf("\n");
     }
+}
+
+
+void arrangeChars1(char *chars) {
+    int len = strlen(chars);
+    char *arr = malloc(sizeof(char) * len);
+    strcpy(arr, chars);
+    
+    arrangeSubChars(arr, 0, strlen(chars));
+}
+
+void arrangeSubChars(char *chars, int from, int len)
+{
+    if (len == 1) {
+	printf("%s\n", chars);
+	return;
+    }
+    for(int i = 0; i < len; i ++) {
+        chars_exchange(chars, from, from + i);
+        arrangeSubChars(chars, from + 1, len - 1);
+    }
+}
+
+
+void chars_exchange(char arr[], int pos1, int pos2) {
+    if (pos1 == pos2) {
+        return;
+    }
+
+    char value1 = arr[pos1];
+    arr[pos1] = arr[pos2];
+    arr[pos2] = value1;
 }
 
 int permutate(int arr[], int len) {

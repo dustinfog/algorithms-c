@@ -16,7 +16,7 @@
 #include "arrange_chars.h"
 
 int main(int argc, char** argv) {
-   arrangeChars("123"); 
+   arrangeChars1("123"); 
    return (EXIT_SUCCESS);
 }
 
