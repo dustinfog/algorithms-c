@@ -105,7 +105,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algorithms-c ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/arrange_array.o: arrange_array.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -157,10 +157,10 @@ ${OBJECTDIR}/linked_list.o: linked_list.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/linked_list.o linked_list.c
 
-${OBJECTDIR}/main.o: main.c
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/matrix.o: matrix.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -186,51 +186,51 @@ ${OBJECTDIR}/print_successive.o: print_successive.c
 
 ${TESTDIR}/TestFiles/f12: ${TESTDIR}/tests/test_arrage_array.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f12 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f12 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/test_arrays.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/test_bst.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/test_chase_game.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/test_count_beads.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/testDigraph.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/test_find_in_rotated.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f10: ${TESTDIR}/tests/test_heap.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f10 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f10 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/testLinkedList.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/test_matrix.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/test_max_diminishing.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 ${TESTDIR}/TestFiles/f11: ${TESTDIR}/tests/test_print_successive.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.c} -o ${TESTDIR}/TestFiles/f11 $^ ${LDLIBSOPTIONS}   -lcunit 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f11 $^ ${LDLIBSOPTIONS}   -lcunit 
 
 
 ${TESTDIR}/tests/test_arrage_array.o: tests/test_arrage_array.c 
@@ -435,7 +435,7 @@ ${OBJECTDIR}/linked_list_nomain.o: ${OBJECTDIR}/linked_list.o linked_list.c
 	    ${CP} ${OBJECTDIR}/linked_list.o ${OBJECTDIR}/linked_list_nomain.o;\
 	fi
 
-${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c 
+${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
@@ -443,7 +443,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.c;\
+	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi

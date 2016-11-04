@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>CQueue.hpp</itemPath>
       <itemPath>arrange_array.h</itemPath>
       <itemPath>arrange_chars.h</itemPath>
       <itemPath>arrays.h</itemPath>
@@ -35,7 +36,7 @@
       <itemPath>find_in_rotated.c</itemPath>
       <itemPath>heap.c</itemPath>
       <itemPath>linked_list.c</itemPath>
-      <itemPath>main.c</itemPath>
+      <itemPath>main.cpp</itemPath>
       <itemPath>matrix.c</itemPath>
       <itemPath>max_diminishing_sub_array.c</itemPath>
       <itemPath>print_successive.c</itemPath>
@@ -141,9 +142,18 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
+      <item path="CQueue.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="arrange_array.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="arrange_array.h" ex="false" tool="3" flavor2="0">
@@ -184,6 +194,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -191,6 +208,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -215,6 +239,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -225,6 +256,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f11</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -240,6 +278,13 @@
           <output>${TESTDIR}/TestFiles/f12</output>
           <linkerDynSerch>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -250,6 +295,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -276,6 +328,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -286,6 +345,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -314,6 +380,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -324,6 +397,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -352,6 +432,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -362,6 +449,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f8</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -386,6 +480,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -404,7 +505,7 @@
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="matrix.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -473,9 +574,18 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
+      <item path="CQueue.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="arrange_array.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="arrange_array.h" ex="false" tool="3" flavor2="0">
@@ -516,6 +626,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -523,6 +640,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -547,6 +671,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -557,6 +688,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f11</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -572,6 +710,13 @@
           <output>${TESTDIR}/TestFiles/f12</output>
           <linkerDynSerch>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -582,6 +727,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -608,6 +760,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -618,6 +777,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -646,6 +812,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -656,6 +829,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f6</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -684,6 +864,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -694,6 +881,13 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f8</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -718,6 +912,13 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcunit</linkerOptionItem>
@@ -736,7 +937,7 @@
       </item>
       <item path="linked_list.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="matrix.c" ex="false" tool="0" flavor2="0">
       </item>
