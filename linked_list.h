@@ -41,6 +41,11 @@ extern "C" {
      * @param another
      */
     linkedList *linkedListAppend1(linkedList *list, linkedList *another);
+    /**
+     * 从尾到头输出链表。
+     * 题目：输入一个链表的头结点，从尾到头反过来输出每个结点的值。链表结点定义如下：
+     */
+    void printSingleListReversely(linkedList *list);
 
 #ifdef __cplusplus
 }

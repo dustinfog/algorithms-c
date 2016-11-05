@@ -13,7 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "CQueue.hpp"
+#include "linked_list.h"
 
 using namespace std;
 
@@ -21,17 +21,13 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    CQueue<int> q;
+    linkedList *list = linkedListCreate();
+    linkedListPush(list, 1);
+    linkedListPush(list, 2);
+    linkedListPush(list, 3);
     
-    q.appendTail(1);
-    q.appendTail(2);
-    q.appendTail(3);
-
-    cout << q.deleteHead();
-    cout << q.deleteHead();
-    cout << q.deleteHead();
-    cout <<"hello,world";
-    
+    printSingleListReversely(list);
+    linkedListFree(list, 2);
     return 0;
 }
 

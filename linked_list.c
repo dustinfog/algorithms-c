@@ -5,6 +5,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "linked_list.h"
 #include "bst.h"
 
@@ -130,4 +131,23 @@ linkedList *linkedListAppend1(linkedList *list, linkedList *another)
     }
 
     return merged;
+}
+
+void printSingleListNodeReversely(linkedListNode *node)
+{
+    if (!node) {
+	return;	
+    }
+    printSingleListNodeReversely(node->next);
+    printf("->%d", node->value);
+}
+/**
+ * 从尾到头输出链表。
+ * 题目：输入一个链表的头结点，从尾到头反过来输出每个结点的值。链表结点定义如下：
+ */
+void printSingleListReversely(linkedList *list)
+{
+    linkedListNode *node = list->head;
+    printf("list");
+    printSingleListNodeReversely(node);
 }
