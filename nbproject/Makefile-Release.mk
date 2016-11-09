@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/chase_game.o \
 	${OBJECTDIR}/count_beads.o \
 	${OBJECTDIR}/digraph.o \
+	${OBJECTDIR}/find_diverse.o \
 	${OBJECTDIR}/find_in_rotated.o \
 	${OBJECTDIR}/heap.o \
 	${OBJECTDIR}/linked_list.o \
@@ -141,6 +142,11 @@ ${OBJECTDIR}/digraph.o: digraph.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/digraph.o digraph.c
+
+${OBJECTDIR}/find_diverse.o: find_diverse.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/find_diverse.o find_diverse.c
 
 ${OBJECTDIR}/find_in_rotated.o: find_in_rotated.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -394,6 +400,19 @@ ${OBJECTDIR}/digraph_nomain.o: ${OBJECTDIR}/digraph.o digraph.c
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/digraph_nomain.o digraph.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/digraph.o ${OBJECTDIR}/digraph_nomain.o;\
+	fi
+
+${OBJECTDIR}/find_diverse_nomain.o: ${OBJECTDIR}/find_diverse.o find_diverse.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/find_diverse.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/find_diverse_nomain.o find_diverse.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/find_diverse.o ${OBJECTDIR}/find_diverse_nomain.o;\
 	fi
 
 ${OBJECTDIR}/find_in_rotated_nomain.o: ${OBJECTDIR}/find_in_rotated.o find_in_rotated.c 

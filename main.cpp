@@ -13,7 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "linked_list.h"
+#include "find_diverse.h"
 
 using namespace std;
 
@@ -21,13 +21,10 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    linkedList *list = linkedListCreate();
-    linkedListPush(list, 1);
-    linkedListPush(list, 2);
-    linkedListPush(list, 3);
-    
-    printSingleListReversely(list);
-    linkedListFree(list, 2);
+    int nums[] = {1, 1, 2, 2, 3, 3, 4, 4, 5, 6};
+    int num1, num2;
+    find_diverse(nums, 10, &num1, &num2);
+    printf("%d, %d", num1, num2);
     return 0;
 }
 
