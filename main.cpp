@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "find_diverse.h"
+#include "linked_list.h"
 
 using namespace std;
 
@@ -21,10 +22,13 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    int nums[] = {1, 1, 2, 2, 3, 3, 4, 4, 5, 6};
-    int num1, num2;
-    find_diverse(nums, 10, &num1, &num2);
-    printf("%d, %d", num1, num2);
+    linkedList *sharedList = linkedListCreate();
+    linkedListPush(sharedList, 5);
+    linkedListPush(sharedList, 6);
+    linkedListPush(sharedList, 7);
+
+    
+    
     return 0;
 }
 

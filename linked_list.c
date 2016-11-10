@@ -177,7 +177,6 @@ linkedListNode *findTail(linkedList *list) {
      int start2 = length2 - sharedLength;
      linkedListNode *node1 = list1->head;
      linkedListNode *node2 = list2->head;
-     
      while(start1 != 0) {
 	 node1 = node1->next;
          start1 --;
