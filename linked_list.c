@@ -151,3 +151,47 @@ void printSingleListReversely(linkedList *list)
     printf("list");
     printSingleListNodeReversely(node);
 }
+
+linkedListNode *findTail(linkedList *list) {
+    linkedListNode *node = list->head;
+    while(node->next) {
+	node = node->next;
+    }
+    
+    return node;
+}
+
+    /**
+     * 两个单向链表，找出它们的第一个公共结点。
+     * 
+     * @param list1
+     * @param list2
+     * @return 
+     */
+ linkedListNode *findFirstSharedNode(linkedList *list1, linkedList *list2)
+ {
+     int length1 = list1->length;
+     int length2 = list2->length;
+     int sharedLength = length1 >length2 ? length2 :length1;
+     int start1 = length1 - sharedLength;
+     int start2 = length2 - sharedLength;
+     linkedListNode *node1 = list1->head;
+     linkedListNode *node2 = list2->head;
+     
+     while(start1 != 0) {
+	 node1 = node1->next;
+         start1 --;
+     }
+
+     while(start2 != 0) {
+	 node2 = node2->next;
+         start2 --;
+     }
+     
+     while(node1 != node2) {
+	 node1 = node1->next;
+     	node2 = node2->next;
+     }
+     
+     return node1;
+ }

@@ -35,6 +35,14 @@ extern "C" {
     void linkedListAppend(linkedList *list, linkedList *another);
 
     /**
+     * 两个单向链表，找出它们的第一个公共结点。
+     * 
+     * @param list1
+     * @param list2
+     * @return 
+     */
+    linkedListNode *findFirstSharedNode(linkedList *list1, linkedList *list2);
+    /**
      * 两个非降序链表的并集，1->2->3 和 2->3->5 并为 1->2->3->5
      * 另外只能输出结果，不能修改两个链表的数据。
      * @param list
