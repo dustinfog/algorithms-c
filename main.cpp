@@ -13,8 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "find_diverse.h"
-#include "linked_list.h"
+#include "strs.h"
 
 using namespace std;
 
@@ -22,12 +21,14 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    linkedList *sharedList = linkedListCreate();
-    linkedListPush(sharedList, 5);
-    linkedListPush(sharedList, 6);
-    linkedListPush(sharedList, 7);
-
+    char str[] = "hello, world";
+    char seq[] = "eol";
+    int remLen = -1;
+    removeSubSeq(str, strlen(str), seq, strlen(seq), &remLen);
     
+    if (remLen != -1) {
+	printf("%s", str);
+    }
     
     return 0;
 }

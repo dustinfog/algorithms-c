@@ -49,7 +49,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/matrix.o \
 	${OBJECTDIR}/max_diminishing_sub_array.o \
-	${OBJECTDIR}/print_successive.o
+	${OBJECTDIR}/print_successive.o \
+	${OBJECTDIR}/strs.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -182,6 +183,11 @@ ${OBJECTDIR}/print_successive.o: print_successive.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/print_successive.o print_successive.c
+
+${OBJECTDIR}/strs.o: strs.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/strs.o strs.c
 
 # Subprojects
 .build-subprojects:
@@ -504,6 +510,19 @@ ${OBJECTDIR}/print_successive_nomain.o: ${OBJECTDIR}/print_successive.o print_su
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/print_successive_nomain.o print_successive.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/print_successive.o ${OBJECTDIR}/print_successive_nomain.o;\
+	fi
+
+${OBJECTDIR}/strs_nomain.o: ${OBJECTDIR}/strs.o strs.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/strs.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/strs_nomain.o strs.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/strs.o ${OBJECTDIR}/strs_nomain.o;\
 	fi
 
 # Run Test Targets
