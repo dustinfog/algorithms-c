@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/matrix.o \
 	${OBJECTDIR}/max_diminishing_sub_array.o \
+	${OBJECTDIR}/n_digits.o \
 	${OBJECTDIR}/print_successive.o \
 	${OBJECTDIR}/strs.o
 
@@ -178,6 +179,11 @@ ${OBJECTDIR}/max_diminishing_sub_array.o: max_diminishing_sub_array.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_diminishing_sub_array.o max_diminishing_sub_array.c
+
+${OBJECTDIR}/n_digits.o: n_digits.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/n_digits.o n_digits.c
 
 ${OBJECTDIR}/print_successive.o: print_successive.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -497,6 +503,19 @@ ${OBJECTDIR}/max_diminishing_sub_array_nomain.o: ${OBJECTDIR}/max_diminishing_su
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_diminishing_sub_array_nomain.o max_diminishing_sub_array.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/max_diminishing_sub_array.o ${OBJECTDIR}/max_diminishing_sub_array_nomain.o;\
+	fi
+
+${OBJECTDIR}/n_digits_nomain.o: ${OBJECTDIR}/n_digits.o n_digits.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/n_digits.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/n_digits_nomain.o n_digits.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/n_digits.o ${OBJECTDIR}/n_digits_nomain.o;\
 	fi
 
 ${OBJECTDIR}/print_successive_nomain.o: ${OBJECTDIR}/print_successive.o print_successive.c 

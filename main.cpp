@@ -13,22 +13,15 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "strs.h"
+#include "n_digits.h"
 
 using namespace std;
 
 /*
- * 
+ * 2,3,4,5,6,8,9,12,15,16,18,20,24
  */
 int main(int argc, char** argv) {
-    char str[] = "hello, world";
-    char seq[] = "eol";
-    int remLen = -1;
-    removeSubSeq(str, strlen(str), seq, strlen(seq), &remLen);
-    
-    if (remLen != -1) {
-	printf("%s", str);
-    }
+    print_n_digits(2);
     
     return 0;
 }
