@@ -11,45 +11,45 @@ int print_next_number(char *number, int *length, int maxLength);
  */
 void print_n_digits(int n)
 {
-    char number[n];
-    memset(number, 0, n);
+    char digits[n];
+    memset(digits, 0, n);
     
     int length = 1;
-    while(print_next_number(number, &length, n));
+    while(print_next_number(digits, &length, n));
 }
 
-int print_next_number(char *number, int *length, int maxLength) {
+int print_next_number(char *digits, int *length, int maxLength) {
     int carry = 1;
     for(int i = maxLength - 1; i >= maxLength - *length; i --)
     {
-        if(number[i] < 9) {
-            number[i] += carry;
+        if(digits[i] < 9) {
+            digits[i] += carry;
             carry = 0;
             break;
         }
 
-        number[i] = 0;
+        digits[i] = 0;
     }
     
     if (carry == 0) {
-        print_number(number, *length, maxLength);
+        print_number(digits, *length, maxLength);
         return 1;
     }
     
     if(*length < maxLength) {
 	++ (*length); 
-        number[maxLength - *length]  = 1;
-	print_number(number, *length, maxLength);
+        digits[maxLength - *length]  = 1;
+	print_number(digits, *length, maxLength);
         return 1;
     }
     
     return 0;
 }
 
-void print_number(char *number, int length, int maxLength)
+void print_number(char *digits, int length, int maxLength)
 {
     for (int i = maxLength - length; i < maxLength; i ++) {
-        printf("%d", number[i]);
+        printf("%d", digits[i]);
     }
     
     printf("\n");
