@@ -51,6 +51,26 @@ linkedListNode *linkedListPush(linkedList *list, int value) {
     return node;
 }
 
+linkedListNode *linkedListUnshift(linkedList *list, int value) {
+    linkedListNode *node = malloc(sizeof(linkedListNode));
+    node->value = value;
+
+    if (!list->length) {
+	list->head = list->tail = node;	
+	node->prev = node->next = NULL;
+    } else {
+    	node->prev = NULL;
+	node->next = list->head;
+    	list->head->prev = node;
+	list->head = node;
+    }
+
+    list->length ++;
+
+    return node;
+}
+
+
 int linkedListShift(linkedList *list)
 {
     if (!list->length) {
@@ -133,6 +153,16 @@ linkedList *linkedListAppend1(linkedList *list, linkedList *another)
     return merged;
 }
 
+
+void linkedListPrint(linkedList *list)
+{
+   linkedListNode *node = list->head;
+   while(node) {
+       printf("%d, ", node->value);
+       node = node->next;
+   }
+}
+
 void printSingleListNodeReversely(linkedListNode *node)
 {
     if (!node) {
@@ -194,3 +224,4 @@ linkedListNode *findTail(linkedList *list) {
      
      return node1;
  }
+

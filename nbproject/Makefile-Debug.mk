@@ -51,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/max_diminishing_sub_array.o \
 	${OBJECTDIR}/n_digits.o \
 	${OBJECTDIR}/print_successive.o \
+	${OBJECTDIR}/reverse_stack.o \
 	${OBJECTDIR}/strs.o
 
 # Test Directory
@@ -189,6 +190,11 @@ ${OBJECTDIR}/print_successive.o: print_successive.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/print_successive.o print_successive.c
+
+${OBJECTDIR}/reverse_stack.o: reverse_stack.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/reverse_stack.o reverse_stack.c
 
 ${OBJECTDIR}/strs.o: strs.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -529,6 +535,19 @@ ${OBJECTDIR}/print_successive_nomain.o: ${OBJECTDIR}/print_successive.o print_su
 	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/print_successive_nomain.o print_successive.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/print_successive.o ${OBJECTDIR}/print_successive_nomain.o;\
+	fi
+
+${OBJECTDIR}/reverse_stack_nomain.o: ${OBJECTDIR}/reverse_stack.o reverse_stack.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/reverse_stack.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -g -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/reverse_stack_nomain.o reverse_stack.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/reverse_stack.o ${OBJECTDIR}/reverse_stack_nomain.o;\
 	fi
 
 ${OBJECTDIR}/strs_nomain.o: ${OBJECTDIR}/strs.o strs.c 

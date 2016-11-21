@@ -32,7 +32,9 @@ extern "C" {
     void linkedListFree(linkedList *list, int freeNodes);
     linkedListNode *linkedListPush(linkedList *list, int value);
     int linkedListShift(linkedList *list);
+    linkedListNode *linkedListUnshift(linkedList *list, int value);
     void linkedListAppend(linkedList *list, linkedList *another);
+    void linkedListPrint(linkedList *list);
 
     /**
      * 两个单向链表，找出它们的第一个公共结点。
