@@ -48,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/linked_list.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/matrix.o \
+	${OBJECTDIR}/max_combination.o \
 	${OBJECTDIR}/max_diminishing_sub_array.o \
 	${OBJECTDIR}/n_digits.o \
 	${OBJECTDIR}/print_successive.o \
@@ -175,6 +176,11 @@ ${OBJECTDIR}/matrix.o: matrix.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix.o matrix.c
+
+${OBJECTDIR}/max_combination.o: max_combination.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_combination.o max_combination.c
 
 ${OBJECTDIR}/max_diminishing_sub_array.o: max_diminishing_sub_array.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -496,6 +502,19 @@ ${OBJECTDIR}/matrix_nomain.o: ${OBJECTDIR}/matrix.o matrix.c
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrix_nomain.o matrix.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/matrix.o ${OBJECTDIR}/matrix_nomain.o;\
+	fi
+
+${OBJECTDIR}/max_combination_nomain.o: ${OBJECTDIR}/max_combination.o max_combination.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/max_combination.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/max_combination_nomain.o max_combination.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/max_combination.o ${OBJECTDIR}/max_combination_nomain.o;\
 	fi
 
 ${OBJECTDIR}/max_diminishing_sub_array_nomain.o: ${OBJECTDIR}/max_diminishing_sub_array.o max_diminishing_sub_array.c 

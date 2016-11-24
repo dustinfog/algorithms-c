@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "reverse_stack.h"
+#include "max_combination.h"
 
 using namespace std;
 
@@ -21,19 +22,18 @@ using namespace std;
  * 2,3,4,5,6,8,9,12,15,16,18,20,24
  */
 int main(int argc, char** argv) {
-    linkedList *stack = linkedListCreate();
-    linkedListUnshift(stack, 1);
-    linkedListUnshift(stack, 2);
-    linkedListUnshift(stack, 3);
-    linkedListUnshift(stack, 4);
-    linkedListUnshift(stack, 5);
+    number *nums[] = {
+	createNumber("431"),
+        createNumber("43"),
+        createNumber("23"),
+    };
 
-    linkedListPrint(stack);
-    reverse_stack(stack);
-    linkedListPrint(stack);
-
-    
-    
-    return 0;
+    int length = sizeof(nums) / sizeof(number *);
+   
+    printNumbers(nums, length); 
+    findMaxCombination(nums, length);
+    printNumbers(nums, length);
+//    
+//    return 0;
 }
 
