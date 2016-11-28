@@ -51,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/max_combination.o \
 	${OBJECTDIR}/max_diminishing_sub_array.o \
 	${OBJECTDIR}/n_digits.o \
+	${OBJECTDIR}/power.o \
 	${OBJECTDIR}/print_successive.o \
 	${OBJECTDIR}/reverse_stack.o \
 	${OBJECTDIR}/strs.o
@@ -191,6 +192,11 @@ ${OBJECTDIR}/n_digits.o: n_digits.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/n_digits.o n_digits.c
+
+${OBJECTDIR}/power.o: power.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/power.o power.c
 
 ${OBJECTDIR}/print_successive.o: print_successive.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -541,6 +547,19 @@ ${OBJECTDIR}/n_digits_nomain.o: ${OBJECTDIR}/n_digits.o n_digits.c
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/n_digits_nomain.o n_digits.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/n_digits.o ${OBJECTDIR}/n_digits_nomain.o;\
+	fi
+
+${OBJECTDIR}/power_nomain.o: ${OBJECTDIR}/power.o power.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/power.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/power_nomain.o power.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/power.o ${OBJECTDIR}/power_nomain.o;\
 	fi
 
 ${OBJECTDIR}/print_successive_nomain.o: ${OBJECTDIR}/print_successive.o print_successive.c 
